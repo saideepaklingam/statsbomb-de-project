@@ -1,0 +1,67 @@
+version: 2
+
+models:
+  - name: stg_events
+    description: "Cleaned event-level data from StatsBomb. One row per event across 147 matches."
+    columns:
+      - name: event_id
+        description: "Unique StatsBomb event UUID."
+        tests:
+          - unique
+          - not_null
+      - name: match_id
+        description: "StatsBomb match identifier."
+        tests:
+          - not_null
+      - name: competition
+        description: "Competition folder name (e.g. FIFA_World_Cup_2022)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['FIFA_World_Cup_2022', 'UEFA_Euro_2024', 'Copa_America_2024']
+      - name: event_type
+        description: "StatsBomb event type (Pass, Shot, Carry, etc.)."
+        tests:
+          - not_null
+
+  - name: stg_matches
+    description: "Match-level metadata. One row per match."
+    columns:
+      - name: match_id
+        description: "StatsBomb match identifier."
+        tests:
+          - unique
+          - not_null
+      - name: home_team_name
+        tests:
+          - not_null
+      - name: away_team_name
+        tests:
+          - not_null
+      - name: match_date
+        tests:
+          - not_null
+
+  - name: stg_competitions
+    description: "Competition-level reference table."
+    columns:
+      - name: competition_id
+        tests:
+          - not_null
+      - name: competition_folder_name
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_lineups
+    description: "Player-match roster data. One row per (player, match)."
+    columns:
+      - name: match_id
+        tests:
+          - not_null
+      - name: player_id
+        tests:
+          - not_null
+      - name: team_name
+        tests:
+          - not_null

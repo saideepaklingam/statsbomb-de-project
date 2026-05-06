@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: mart_team_attack_quality
+    description: "Team attacking quality: xG, shot volume, shape of attack, per (team, competition, season)."
+    columns:
+      - name: team_name
+        tests:
+          - not_null
+      - name: competition_name
+        tests:
+          - not_null
+      - name: matches_played
+        tests:
+          - not_null
+      - name: xg_per_match
+        tests:
+          - not_null
+
+  - name: mart_team_ball_progression
+    description: "Ball progression: progressive passes, carries, final-third entries per team-competition."
+    columns:
+      - name: team_name
+        tests:
+          - not_null
+      - name: progressive_passes_per_match
+        tests:
+          - not_null
+
+  - name: mart_team_defensive_pressure
+    description: "Defensive pressure: PPDA, counterpress share, high-press intensity."
+    columns:
+      - name: team_name
+        tests:
+          - not_null
+      - name: ppda
+        tests:
+          - not_null
+
+  - name: mart_team_set_piece_effectiveness
+    description: "Set-piece attacking efficacy across full possession chains from dead balls."
+    columns:
+      - name: team_name
+        tests:
+          - not_null
+      - name: sp_xg_per_match
+        tests:
+          - not_null
+
+  - name: mart_player_impact
+    description: "Player-level per-90 rates for offensive, defensive, and creative output."
+    columns:
+      - name: player_id
+        tests:
+          - not_null
+      - name: player_name
+        tests:
+          - not_null
+      - name: minutes_played
+        tests:
+          - not_null
+      - name: np_xg_per_90
+        tests:
+          - not_null
+
+  - name: mart_team_gamestate_behavior
+    description: "Team tactical adaptation by game state (Winning/Drawing/Losing)."
+    columns:
+      - name: team_name
+        tests:
+          - not_null
+      - name: game_state
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['Winning', 'Drawing', 'Losing']
+      - name: minutes_in_state
+        tests:
+          - not_null

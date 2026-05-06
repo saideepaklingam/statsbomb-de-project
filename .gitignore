@@ -1,0 +1,37 @@
+# Data files (regeneratable)
+data/bronze/
+data/exports/
+
+# Warehouse (DuckDB binary)
+warehouse/
+*.duckdb
+
+# Logs
+logs/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+*.egg-info/
+
+# dbt artifacts
+dbt/statsbomb_warehouse/target/
+dbt/statsbomb_warehouse/dbt_packages/
+dbt/statsbomb_warehouse/logs/
+dbt/statsbomb_warehouse/dev.duckdb
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+project_structure.txt
+.dbt/
