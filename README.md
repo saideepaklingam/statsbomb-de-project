@@ -37,7 +37,7 @@ The 5 pages:
 
 Two slicers (tournament and team) are synced across all pages. Page 3 has a third slicer for player position that stays local to that page. Page 5 has no slicers because the findings are fixed and tied to specific teams.
 
-`docs/story.md` covers each page in detail with the design decisions behind it.
+`docs/dashboard_walkthrough.md` covers each page in detail with the design decisions behind it.
 
 ![Dashboard hero](visualization/screenshots/Page1.png)
 ![Dashboard hero](visualization/screenshots/Page2.png)
